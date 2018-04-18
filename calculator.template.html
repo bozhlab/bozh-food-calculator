@@ -1,0 +1,36 @@
+Person: <input type="number" ng-model="$ctrl.person" class="form-control-sm"/>
+<br/><br/>
+
+Service Charge(%): <input type="text" ng-model="$ctrl.serviceCharge" class="form-control-sm"/>
+
+
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Total <span ng-show="$ctrl.serviceCharge > 0">(Svc.)</span></th>
+      <th scope="col">Paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="expense in $ctrl.expenses">
+      <th scope="row"><input type="text" ng-model="expense.name" class="form-control form-control-sm" maxlength="5" size="2"/></th>
+      <td><input type="text" ng-model="expense.costStr" class="form-control form-control-sm" size="2"/></td>
+      <td>{{expense.total()}} <span ng-show="$ctrl.serviceCharge > 0">({{(expense.total() * $ctrl.serviceCharge)/100}})</span></td>
+      <td><b>{{expense.paid() + (expense.paid() * $ctrl.serviceCharge)/100 | number}}</b></td>
+    </tr>
+    <tr>
+      <th scope="row">Share</th>
+      <td><input type="text" ng-model="$ctrl.shares.costStr" class="form-control form-control-sm" size="2"/></td>
+      <td>{{$ctrl.shares.total()}} <span ng-show="$ctrl.serviceCharge > 0">({{($ctrl.shares.total() * $ctrl.serviceCharge)/100}})</span></td>
+      <td><b>{{(($ctrl.shares.total() + ($ctrl.shares.total() * $ctrl.serviceCharge)/100) / $ctrl.person) | number}}</b></td>
+    </tr>
+    <tr class="table-dark">
+      <th scope="row">Net Total</th>
+      <td></td>
+      <td></td>
+      <td><b>{{($ctrl.netTotal() + ($ctrl.netTotal() * $ctrl.serviceCharge)/100) | number}}</b></td>
+    </tr>
+  </tbody>
+</table>
