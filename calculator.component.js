@@ -9,7 +9,7 @@ angular.
 
       this.expenses = [
         {
-          name: '1',
+          name: '',
           costStr: '0',
           total: (function() { return math.eval(this.costStr);}),
           paid: (function() {
@@ -18,7 +18,7 @@ angular.
                   //return 0;
                 }),
         }, {
-          name: '2',
+          name: '',
           costStr: '0',
           total: (function() { return math.eval(this.costStr);}),
           paid: (function() {
@@ -47,7 +47,7 @@ angular.
                if ( (newValue !== oldValue) && newValue != null) {
                  var objects = [];
                  for (var x = 0; x < newValue; x++) {
-                   objects[x] = {  name: x + 1,
+                   objects[x] = {  name: '',
                                    costStr: '0',
                                    total: (function() { return math.eval(this.costStr);}),
                                    paid: (function() {
