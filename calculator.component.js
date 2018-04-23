@@ -47,7 +47,7 @@ angular.
       this.export = function(){
                      html2canvas(document.getElementById('cal'), {
                          onrendered: function (canvas) {
-                             var data = canvas.toDataURL();
+                             var data = canvas.toDataURL("image/jpeg");
                              //that.bill = data;
                              var w = window.open("");
                              var image = new Image();
