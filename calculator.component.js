@@ -43,6 +43,23 @@ angular.
                       value += that.shares.total();
                       return value;
                   });
+
+      this.export = function(){
+                     html2canvas(document.getElementById('cal'), {
+                         onrendered: function (canvas) {
+                             var data = canvas.toDataURL();
+                             //that.bill = data;
+                             var w = window.open("");
+                             var image = new Image();
+                             image.src = data;
+                             w.document.write(image.outerHTML);
+
+                         }
+                     });
+                  };
+
+       //this.bill = '';
+
        $scope.$watch('$ctrl.person', function(newValue, oldValue) {
                if ( (newValue !== oldValue) && newValue != null) {
                  var objects = [];
